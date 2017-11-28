@@ -5,7 +5,9 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(request):
-    return HttpResponse('welcome to ')
+    columns = Column.objects.all()
+
+    return render(request,'index.html',{'columns':columns})
 
 
 def column_detail(request,column_slug):

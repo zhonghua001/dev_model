@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ article.title }}
+{% endblock title %}
+
+{% block content %}
+    {% for art in article %}
+        <h1><a href="#" onclick="article_detail('{{ art.id }}')" id="{{ art.id }}">article title: {{ art.title }}</a>
+
+        </h1>
+    {% endfor %}
+
+
+    <div id="main">
+        <a onclick="test(1)" id="1">aaa</a>
+    </div>
+
+{% endblock content %}
+
+{% block js %}
+<script>
+
+function article_detail(id){
+    console.log(id);
+
+{#    alert($("#"+id).text());#}
+
+    $.getJSON('/news/'+"{{ article_slug }}/"+id+'/',function(ret){
+
+        var content = ret.article_content;
+        var main = $("#main");
+        main.empty();
+        main.append("<p>"+content+"</p>")
+
+    })
+
+}
+
+</script>
+
+{% endblock js %}

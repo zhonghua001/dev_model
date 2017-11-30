@@ -1,39 +1,97 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}欢迎光临{% endblock title %} - 自强学堂</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 2 | Dashboard</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
 
-    <!-- Bootstrap -->
-    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- 引入下面两个库让 IE8 支持 HTML5 元素 -->
-    <!-- 警告: Respond.js 通过 file:// 浏览的时候不能正常工作！-->
-    <!--[if lt IE 9]>
-      <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
-      <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    {% block css %}
+    {% include 'header-script.html' %}
+    {% include 'link-css.html' %}
 
-    {% endblock css %}
+    {% block self-css-js %}{% endblock self-css-js %}
 
-    {% block js %}
+  <!-- Google Font -->
+{#  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">#}
+</head>
+{#<body class="skin-blue sidebar-mini" style="background-color: rgb(204, 232, 207);">#}
+<body class="hold-transition skin-blue sidebar-mini">
+<script type="text/css">
+    .loading{
+ background:#FF6100; //设置进度条的颜色
+ height:5px; //设置进度条的高度
+ position:fixed; //设定进度条跟随屏幕滚动
+ top:0; //将进度条固定在页面顶部
+ z-index:99999 //提高进度条的优先层级，避免被其他层遮挡
+}
 
-    {% endblock js %}
-  </head>
-  <body>
-    <div>
-        <div>
-            {% block content %}
-            <h1>自强 新闻网</h1>
-            {% endblock content %}
-        </div>
+
+</script>
+<div class="wrapper">
+
+  <header class="main-header">
+    {% include 'main-header.html' %}
+  </header>
+<script type="text/javascript">  $('.loading').animate({'width':'10%'},50);  //第一个进度节点 </script>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    {% include 'main-sidebar.html' %}
+    <!-- /.sidebar -->
+  </aside>
+<script type="text/javascript">  $('.loading').animate({'width':'33%'},50);  //第一个进度节点 </script>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+     {% include 'content-header.html' %}
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <!-- Small boxes (Stat box) -->
+     {% block content %}
+
+
+     {% endblock content %}
+
+    </section>
+  <script type="text/javascript">  $('.loading').animate({'width':'80%'},50);  //第一个进度节点 </script>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 2.4.0
     </div>
+    <strong>Copyright &copy; 2014-2016 <a href="#">Almsaeed Studio</a>.</strong> All rights
+    reserved.
+  </footer>
 
-    <script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    {% include "baidutongji.html" %}
-  </body>
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Create the tabs -->
+   {% include 'control-sidebar-dark.html' %}
+  </aside>
+
+<script type="text/javascript">  $('.loading').animate({'width':'100%'},50);  //第一个进度节点 </script>
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+<script>
+    $(document).ready(function(){
+     $('.loading').fadeOut();
+    });
+</script>
+
+
+
+</body>
 </html>

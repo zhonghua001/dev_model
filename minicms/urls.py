@@ -16,13 +16,16 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 from DjangoUeditor import urls as DjangoUeditor_urls
-from news import views as news_views
+from myapp import views as news_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ueditor/',include(DjangoUeditor_urls)),
     url(r'^$',news_views.index,name='index'),
+    # url(r'^test/',news_views.test,name='test'),
+    url(r'^base/', news_views.base, name='base'),
     url(r'^column/(?P<column_slug>[^/]+)/$',news_views.column_detail,name='column'),
     url(r'^news/(?P<article_slug>[^/]+)/$',news_views.article_detail,name='article'),
+    url(r'^news/(?P<article_slug>[^/]+)/(?P<article_id>\d+)/$',news_views.article_id_detail,name='article_id'),
 
 ]
 

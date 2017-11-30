@@ -8,7 +8,7 @@ create some records for demo database
 '''
 
 from minicms.wsgi import *
-from news.models import Column, Article
+from myapp.models import Column, Article
 
 import os,django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE','minicms.settings')

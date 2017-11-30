@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ column.title }}
+{% endblock title %}
+
+
+{% block content %}
+Column introduction: {{ column.intro }}
+Column article list:
+    <ul>
+        {% for column in column.article_set.all %}
+{#            {{ column.get_absolute_url }}#}
+         <li><a href="{{ column.get_absolute_url }}">{{ column.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+
+    require
+{% endblock content %}
+
+
